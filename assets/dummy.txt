@@ -1,0 +1,1 @@
+Put all your css, images and js files here and configure your path to point in this directory
