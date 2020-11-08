@@ -11,5 +11,6 @@
 
 
  $name = "Zehar";
+ $base_url = "/";
 
 ?>
