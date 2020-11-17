@@ -10,7 +10,7 @@ CREATE TABLE booking
     id int(11) NOT NULL AUTO_INCREMENT,
     cid    int(11)             NOT NULL,
     status ENUM ('PENDING', 'CONFIRMED', 'CANCELLED') DEFAULT 'PENDING',
-    numberOfRooms  int(5)                               DEFAULT '1',
+    numberOfRooms  int(5)                               DEFAULT 1,
     PRIMARY KEY(id)
 );
 
