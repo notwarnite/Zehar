@@ -15,8 +15,12 @@ else {
      
    }
 
-// $con = pg_connect("host=$host port=$port dbname=$db user=$user password=$pass")
-//     or die ("Could not connect to server\n"); 
+
+// $query = "DROP table customer CASCADE";
+// pg_query($con, $query) or die("Cannot execute query: $query\n");
+
+// $query = "CREATE SCHEMA customer";
+// pg_query($con, $query) or die("Cannot execute query: $query\n");
 
 $query = "DROP TABLE IF EXISTS BOOKING"; 
 pg_query($con, $query) or die("Cannot execute query: $query\n"); 
@@ -45,10 +49,10 @@ $sql =<<<EOF
       CREATE TABLE CUSTOMER (
     CID SERIAL PRIMARY KEY NOT NULL ,
     FULLNAME VARCHAR NOT NULL,
-    AGE VARCHAR NOT NULL,
+    AGE INT NOT NULL,
     EMAIL VARCHAR NOT NULL,
     PASSWORD VARCHAR NOT NULL,
-    CARDNUMBER INT DEFAULT NULL,
+    CARDNUMBER VARCHAR DEFAULT NULL,
     PHONE VARCHAR DEFAULT NULL);
 EOF;
 
