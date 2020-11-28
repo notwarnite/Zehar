@@ -22,6 +22,61 @@ else {
 // $query = "CREATE SCHEMA customer";
 // pg_query($con, $query) or die("Cannot execute query: $query\n");
 
+$sql =<<<EOF
+      drop table customer cascade;
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table dropped successfully\n";
+   }
+
+$sql =<<<EOF
+      drop table booking cascade;
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table dropped successfully\n";
+   }
+
+$sql =<<<EOF
+      drop table pricing cascade;
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table dropped successfully\n";
+   }
+
+$sql =<<<EOF
+      drop table reservation cascade;
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table dropped successfully\n";
+   }
+
+$sql =<<<EOF
+      drop table administrator cascade;
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table dropped successfully\n";
+   }
+
 $query = "DROP TABLE IF EXISTS BOOKING"; 
 pg_query($con, $query) or die("Cannot execute query: $query\n"); 
 
