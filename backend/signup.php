@@ -16,11 +16,8 @@ else {
      
    }
 
-
-// INSERT INTO customer VALUES (" . $_POST['cid']. ", " . $_POST['name']. "," . $_POST['age']. " , " . $_POST['email']. ", " . $_POST['password']. ", " . $_POST['cardnumber']. ", " . $_POST['phonenumber']. ");
-
 $sql =<<<EOF
-      INSERT INTO customer VALUES (" . $_POST['cid']. ", " . $_POST['name']. "," . $_POST['age']. " , " . $_POST['email']. ", " . $_POST['password']. ", " . $_POST['cardnumber']. ", " . $_POST['phonenumber']. ");
+      INSERT INTO customer (FULLNAME, AGE, EMAIL, PASSWORD, CARDNUMBER, PHONE) VALUES (" . $_POST['name']. "," . $_POST['age']. " , " . $_POST['email']. ", " . $_POST['password']. ", " . $_POST['cardnumber']. ", " . $_POST['phonenumber']. ");
 EOF;
 
    $ret = pg_query($con, $sql);
