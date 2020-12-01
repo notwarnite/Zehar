@@ -37,6 +37,22 @@ EOF;
       // header('Location: login.php');
    }  
 
+$query = "select rooms_booked from rooms where room_type =  " . $_POST['room_type']. ""; 
+
+$rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
+
+$row = pg_fetch_row($rs);
+
+$inc_room = $row[0] + 1;
+
+// echo $inc_room ;
+
+$query = "update rooms set rooms_booked = $inc_room where room_type =  " . $_POST['room_type']. ";"; 
+
+$rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
+
+// header('Location:./../frontend/admin.php');   
+
 // header('Location:./../frontend/admin.php');      
 
 ?> 
