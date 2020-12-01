@@ -86,7 +86,7 @@ $sql =<<<EOF
       (ID SERIAL PRIMARY KEY     NOT NULL,
       CID INT NOT NULL,
       STATUS VARCHAR NOT NULL DEFAULT 'PENDING',
-      NUMBEROFROOMS INT DEFAULT 1 );
+      ROOMTYPE VARCHAR DEFAULT NULL);
 EOF;
 
    $ret = pg_query($con, $sql);
@@ -104,7 +104,7 @@ $sql =<<<EOF
       CREATE TABLE CUSTOMER (
     CID SERIAL PRIMARY KEY NOT NULL ,
     FULLNAME VARCHAR NOT NULL,
-    AGE INT NOT NULL,
+    AGE INT,
     EMAIL VARCHAR NOT NULL,
     PASSWORD VARCHAR NOT NULL,
     CARDNUMBER VARCHAR DEFAULT NULL,
@@ -171,6 +171,24 @@ $sql =<<<EOF
     CHILDREN INT DEFAULT 0,
     REQUESTS VARCHAR DEFAULT NULL,
     TIME_RECORD TIMESTAMP);
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "Table created successfully\n";
+   }
+
+$query = "DROP TABLE IF EXISTS ROOMS"; 
+pg_query($con, $query) or die("Cannot execute query: $query\n"); 
+
+$sql =<<<EOF
+     CREATE TABLE ROOMS (
+    ROOM_TYPE VARCHAR PRIMARY KEY ,
+    PRICE INT DEFAULT 0,
+    CAPACITY INT DEFAULT 0,
+    TOTAL_ROOMS INT DEFAULT 0);
 EOF;
 
    $ret = pg_query($con, $sql);
