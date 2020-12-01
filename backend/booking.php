@@ -51,6 +51,27 @@ $query = "update rooms set rooms_booked = $inc_room where room_type =  " . $_POS
 
 $rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
 
+
+$query = "select id from booking where cid = $ci;"; 
+
+$rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
+
+$row = pg_fetch_row($rs);
+
+$bi = $row[0];
+
+$sql =<<<EOF
+      INSERT INTO pricing (booking_id, nights, total_price, booked_date) VALUES ($bi ,  " . $_POST['nights']. ", " . $_POST['total_price']. ", " . $_POST['booked_date']. ");
+EOF;
+
+   $ret = pg_query($con, $sql);
+   if(!$ret) {
+      echo pg_last_error($con);
+   } else {
+      echo "User details added. \n";
+      // header('Location: login.php');
+   } 
+
 // header('Location:./../frontend/admin.php');   
 
 // header('Location:./../frontend/admin.php');      
