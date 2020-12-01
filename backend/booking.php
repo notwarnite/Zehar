@@ -52,7 +52,7 @@ $query = "update rooms set rooms_booked = $inc_room where room_type =  " . $_POS
 $rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
 
 
-$query = "select id from booking where cid = $ci;"; 
+$query = "select id from booking where cid = $ci order by cid desc limit 1;"; 
 
 $rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
 
